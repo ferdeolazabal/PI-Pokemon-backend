@@ -20,10 +20,10 @@
 const server = require('./src/app.js');
 const { conn, Type, Pokemon } = require('./src/db.js');  
 const { infoTypeApy } = require('./src/Controllers/type'); 
-
+;
 
 conn.sync({ force: false }).then(() => {
-  server.listen(3001, async () => {
+  server.listen( process.env.PORT, async () => {
     
     try{
       
@@ -39,7 +39,7 @@ conn.sync({ force: false }).then(() => {
     } catch(error) {
       console.error(error);
     }
-      console.log('server listening at 3001'); // eslint-disable-line no-console
+      console.log(`server listening at ${ process.env.PORT }`);
       console.log('DB connected, Pokemons && types preloaded!');
   });
 }); 
